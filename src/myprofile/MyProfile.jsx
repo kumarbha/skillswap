@@ -36,9 +36,9 @@ const MyProfile = () => {
 
   return (
     <>
-     <Header image={person.picture} />
-        <h1 className="page-title">My Profile</h1>
-      
+
+      <h1 className="page-title">My Profile</h1>
+
       <ProfilePicture picture={person.picture} />
 
       <MyInterests interest={person.interests} />
