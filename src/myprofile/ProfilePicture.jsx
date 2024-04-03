@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
+// eslint-disable-next-line react/prop-types
 function ProfilePicture({ picture }) {
     const [backgroundImageUrl, setBackgroundImageUrl] = useState(picture);
 
@@ -12,7 +13,7 @@ function ProfilePicture({ picture }) {
         const profileU = document.getElementById("profileU");
         profilePic.src = URL.createObjectURL(profileU.files[0]);
         setBackgroundImageUrl(URL.createObjectURL(profileU.files[0]));
-    };
+    }
 
     return (
         <section className="profileSection">

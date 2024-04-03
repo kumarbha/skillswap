@@ -6,9 +6,6 @@ import CurrentSwap from './CurrentSwap';
 import MySkills from './MySkills';
 import Frame from './Frame';
 import Saved from './saves';
-import Header from './Header';
-
-
 import '../myprofile/MyProfile.css'
 
 
