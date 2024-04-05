@@ -1,15 +1,15 @@
-import React from "react";
 import Home from "./home/Home";
 import Search from "./search/Search";
 import MyProfile from "./myprofile/MyProfile";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Footer from "./footer/Footer.jsx";
+import {SkillsProvider} from "./context/SkillsContext.jsx";
 
 const App = () => {
     return (
         <Router>
             <div className="outer-container">
-
+                <SkillsProvider>
                     <div className="container">
                         <Routes>
                             <Route exact path="/" element={<MyProfile />} />
@@ -17,7 +17,7 @@ const App = () => {
                             <Route path="/search" element={<Search />} />
                         </Routes>
                     </div>
-
+                </SkillsProvider>
                 <Footer/>
             </div>
         </Router>

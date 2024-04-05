@@ -1,14 +1,23 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from "../context/SkillsContext.jsx";
+
 
 const Search = () => {
+    const navigate = useNavigate()
     const [data, setData] = useState([]);
-    const [selectedSkills, setSelectedSkills] = useState([]);
+    const {skills, setSkills} = useAuth();
     const skillsSelected = (item) => {
-        setSelectedSkills([...selectedSkills, item]);
+        setSkills([...skills, item]);
+        console.log(skills);
     }
 
+    const navigateToProfile = () => {
+        navigate("/")
+    };
+
     const removeSkill = (idToRemove) => {
-        setSelectedSkills(selectedSkills.filter(skill => skill.id !== idToRemove));
+        setSkills(skills.filter(skill => skill.id !== idToRemove));
     };
 
     useEffect(() => {
@@ -37,7 +46,7 @@ const Search = () => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({"skills": [...selectedSkills]}) // Replace with your data object
+                body: JSON.stringify({"skills": [...skills]}) // Replace with your data object
             });
 
             if (!response.ok) {
@@ -59,7 +68,7 @@ const Search = () => {
         <div>
             <h1>Hello Elena!</h1>
             <p> Lets add your skills so people can easily find you.</p>
-            {selectedSkills?.map(item => (
+            {skills?.map(item => (
                 <div style={{ padding: '10px' }} key={item.id}>
                     <button>
                         {item.name}
@@ -82,7 +91,8 @@ const Search = () => {
                 </div>
             ))}
 
-            <button style={{ backgroundColor: 'darkolivegreen' }}onClick={postDataToServer}>call backend to post data</button>
+            <button style={{ backgroundColor: 'darkolivegreen' }} onClick={postDataToServer}>call backend to post data</button>
+            <button style={{ backgroundColor: 'lightyellow' }} onClick={navigateToProfile} >set data in another component</button>
 
         </div>
 
